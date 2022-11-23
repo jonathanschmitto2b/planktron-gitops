@@ -326,3 +326,25 @@ spec:
 #       selfHeal: true
 #     syncOptions:
 #     - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: integration-argocd-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: kubernetes/integration-argocd
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
