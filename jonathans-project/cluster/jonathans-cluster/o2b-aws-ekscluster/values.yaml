@@ -1,0 +1,47 @@
+# Default values for cp_eks.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: 7a9da14a-977c-4100-988e-91867007a3b4
+providerConfigName: a8252daa-4d2c-49d2-815a-dcd18ce0c204
+
+eks:
+  name: jonathans-cluster
+  region: us-west-1
+  version: "1.24"
+  endpointPrivateAccess: false
+  endpointPublicAccess: true
+
+network:
+  subnetIds:
+  - "subnet-078e659245d8b245a"
+  - "subnet-07446b0fa8fed9de9"
+  - "subnet-095e69a5d50e7bd6a"
+
+nodeGroups:
+  - name: ngapp
+    minSize: 1
+    maxSize: 3
+    desiredSize: 2
+    instanceTypes:  # optional
+    - m5.large
+    amiType:        # Optional
+    capacityType:   # Optional
+    labels:         # Optional
+      nodegroup: application
+      env: dev
+  - name: ngtools
+    minSize: 1
+    maxSize: 2
+    desiredSize: 3
+    labels:
+      nodegroup: tools
+  - name: kafka
+    minSize: 3
+    maxSize: 3
+    diskSize: 30  # Optional
+    desiredSize: 3
+    labels:
+      nodegroup: kafkka
+    taints:
+      nodegroup: kafka
