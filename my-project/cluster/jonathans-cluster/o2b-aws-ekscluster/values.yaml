@@ -8,7 +8,7 @@ cp_eks:
   eks:
     name: jonathans-cluster
     region: us-west-1
-    version: "1.24"
+    version: "1.23"
     endpointPrivateAccess: false
     endpointPublicAccess: true
 
