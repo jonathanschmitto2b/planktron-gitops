@@ -14,9 +14,9 @@ cp_eks:
 
   network:
     subnetIds:
-    - "subnet-078e659245d8b245a"
-    - "subnet-07446b0fa8fed9de9"
-    - "subnet-095e69a5d50e7bd6a"
+    - "subnet-0410b285a2abbbdca"
+    - "subnet-07e61bc50af504f5e"
+    - "subnet-03200388906d7a3a1"
 
   nodeGroups:
     - name: ngapp
