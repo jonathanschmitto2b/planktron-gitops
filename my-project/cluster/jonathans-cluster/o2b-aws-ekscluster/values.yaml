@@ -19,29 +19,14 @@ cp_eks:
     - "subnet-03200388906d7a3a1"
 
   nodeGroups:
-    - name: ngapp
-      minSize: 1
-      maxSize: 3
-      desiredSize: 2
-      instanceTypes:  # optional
-      - m5.large
-      amiType:        # Optional
-      capacityType:   # Optional
-      labels:         # Optional
-        nodegroup: application
-        env: dev
-    - name: ngtools
-      minSize: 1
-      maxSize: 2
-      desiredSize: 3
-      labels:
-        nodegroup: tools
-    - name: kafka
+    - name: ngmgm
       minSize: 3
       maxSize: 3
-      diskSize: 30  # Optional
       desiredSize: 3
+      instanceTypes:
+      - m5.large
+      amiType: AL2_x86_64
+      capacityType: ON_DEMAND
       labels:
-        nodegroup: kafkka
-      taints:
-        nodegroup: kafka
+        nodegroup: management
+        env: dev
